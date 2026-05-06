@@ -41,6 +41,10 @@ CREATE TABLE IF NOT EXISTS admins (
   created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Admin par défaut (password: icc-admin-2026 — à changer en prod)
+INSERT IGNORE INTO admins (email, password) VALUES
+  ('admin@icc-cerdagne.fr', '$2a$10$3YH8VuRHBN3mOZ2JNRxt0.ppbqNTEQPZAuaZv8MvMlax5OrI20qCu');
+
 -- Acteurs fondateurs
 INSERT IGNORE INTO acteurs (slug, nom, categorie, description, localite, visible) VALUES
   ('navetteinfo', 'NavetteInfo', 'numerique', 'Développement web et numérique local — navetteinfo.fr', 'Cerdagne', 1),
