@@ -1,0 +1,33 @@
+<section class="page-header">
+  <div class="container">
+    <span class="section-tag">Collectif</span>
+    <h1>Annuaire des acteurs</h1>
+    <p>Artisans, réparateurs, professionnels du numérique et autres acteurs locaux de Cerdagne &amp; Capcir.</p>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="filters">
+      <button class="filter-btn" [class.active]="activeFilter()==='all'" (click)="activeFilter.set('all')">Tous</button>
+      @for (cat of categories; track cat.key) {
+        <button class="filter-btn" [class.active]="activeFilter()===cat.key" (click)="activeFilter.set(cat.key)">
+          {{ cat.label }}
+        </button>
+      }
+    </div>
+
+    @if (filtered().length) {
+      <div class="grid-3">
+        @for (a of filtered(); track a.id) {
+          <app-card-acteur [acteur]="a" />
+        }
+      </div>
+    } @else {
+      <div class="empty-state">
+        <div class="icon">🔍</div>
+        <p>Aucun acteur dans cette catégorie pour l'instant.</p>
+      </div>
+    }
+  </div>
+</section>

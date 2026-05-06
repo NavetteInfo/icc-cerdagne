@@ -1,0 +1,78 @@
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="logo">⚙ ICC Admin</div>
+    <nav class="admin-nav">
+      <a routerLink="/admin/dashboard" routerLinkActive="active">📊 Dashboard</a>
+      <a routerLink="/admin/acteurs" routerLinkActive="active">👥 Acteurs</a>
+      <a routerLink="/admin/evenements" routerLinkActive="active">📅 Événements</a>
+      <a routerLink="/admin/adhesions" routerLinkActive="active">📬 Adhésions</a>
+    </nav>
+    <div style="padding:16px 20px;margin-top:auto">
+      <button class="btn btn-sm" style="color:rgba(255,255,255,.5);width:100%" (click)="logout()">Déconnexion</button>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <div class="admin-header">
+      <h3>Demandes d'adhésion</h3>
+      <span style="font-size:.85rem;color:var(--stone)">{{ adhesions().length }} demande(s)</span>
+    </div>
+    <div class="admin-content">
+      <table class="admin-table">
+        <thead>
+          <tr><th>Nom</th><th>Email</th><th>Activité</th><th>Date</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          @for (a of adhesions(); track a.id) {
+            <tr>
+              <td><strong>{{ a.nom }}</strong></td>
+              <td><a [href]="'mailto:' + a.email" style="color:var(--green)">{{ a.email }}</a></td>
+              <td>{{ a.activite || '—' }}</td>
+              <td>{{ a.created_at | date:'dd/MM/yyyy' }}</td>
+              <td>
+                <button class="btn btn-sm btn-outline" (click)="open(a)">Voir</button>
+              </td>
+            </tr>
+          }
+          @empty {
+            <tr><td colspan="5" style="text-align:center;padding:40px;color:var(--muted)">Aucune demande pour l'instant.</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+@if (selected()) {
+  <div class="modal-backdrop" (click)="close()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Demande de {{ selected()!.nom }}</h3>
+        <button class="modal-close" (click)="close()">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <p style="margin-top:4px"><a [href]="'mailto:' + selected()!.email" style="color:var(--green)">{{ selected()!.email }}</a></p>
+      </div>
+      @if (selected()!.activite) {
+        <div class="form-group">
+          <label>Activité / Structure</label>
+          <p style="margin-top:4px">{{ selected()!.activite }}</p>
+        </div>
+      }
+      @if (selected()!.message) {
+        <div class="form-group">
+          <label>Message</label>
+          <p style="margin-top:4px;white-space:pre-wrap">{{ selected()!.message }}</p>
+        </div>
+      }
+      <div style="font-size:.82rem;color:var(--muted);margin-bottom:var(--space-5)">
+        Reçue le {{ selected()!.created_at | date:'dd/MM/yyyy à HH:mm' }}
+      </div>
+      <div style="display:flex;gap:12px;justify-content:flex-end">
+        <a [href]="'mailto:' + selected()!.email" class="btn btn-primary btn-sm">Répondre par email</a>
+        <button class="btn btn-outline btn-sm" (click)="close()">Fermer</button>
+      </div>
+    </div>
+  </div>
+}

@@ -1,0 +1,89 @@
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="logo">⚙ ICC Admin</div>
+    <nav class="admin-nav">
+      <a routerLink="/admin/dashboard" routerLinkActive="active">📊 Dashboard</a>
+      <a routerLink="/admin/acteurs" routerLinkActive="active">👥 Acteurs</a>
+      <a routerLink="/admin/evenements" routerLinkActive="active">📅 Événements</a>
+      <a routerLink="/admin/adhesions" routerLinkActive="active">📬 Adhésions</a>
+    </nav>
+    <div style="padding:16px 20px;margin-top:auto">
+      <button class="btn btn-sm" style="color:rgba(255,255,255,.5);width:100%" (click)="logout()">Déconnexion</button>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <div class="admin-header">
+      <h3>Événements</h3>
+      <button class="btn btn-primary btn-sm" (click)="openNew()">+ Ajouter</button>
+    </div>
+    <div class="admin-content">
+      <table class="admin-table">
+        <thead>
+          <tr><th>Titre</th><th>Date</th><th>Lieu</th><th>Visible</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          @for (e of evenements(); track e.id) {
+            <tr>
+              <td><strong>{{ e.titre }}</strong></td>
+              <td>{{ e.date_debut | date:'dd/MM/yyyy' }}</td>
+              <td>{{ e.lieu || '—' }}</td>
+              <td>{{ e.visible ? '✅' : '❌' }}</td>
+              <td>
+                <button class="btn btn-sm btn-outline" (click)="openEdit(e)">Modifier</button>
+                <button class="btn btn-sm" style="color:#dc2626;margin-left:8px" (click)="delete(e)">Supprimer</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+@if (showModal()) {
+  <div class="modal-backdrop" (click)="showModal.set(false)">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>{{ editing() ? 'Modifier' : 'Nouvel événement' }}</h3>
+        <button class="modal-close" (click)="showModal.set(false)">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Titre *</label>
+        <input class="form-control" [(ngModel)]="form.titre" name="titre">
+      </div>
+      <div class="form-group">
+        <label>Slug (URL) *</label>
+        <input class="form-control" [(ngModel)]="form.slug" name="slug" placeholder="recyclathon-2026">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" [(ngModel)]="form.description" name="description"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Lieu</label>
+        <input class="form-control" [(ngModel)]="form.lieu" name="lieu">
+      </div>
+      <div class="form-group">
+        <label>Date de début *</label>
+        <input class="form-control" type="datetime-local" [(ngModel)]="form.date_debut" name="date_debut">
+      </div>
+      <div class="form-group">
+        <label>Date de fin</label>
+        <input class="form-control" type="datetime-local" [(ngModel)]="form.date_fin" name="date_fin">
+      </div>
+      <div class="form-group">
+        <label>Lien d'inscription</label>
+        <input class="form-control" [(ngModel)]="form.lien_insc" name="lien_insc">
+      </div>
+      <div class="form-group" style="display:flex;align-items:center;gap:10px">
+        <input type="checkbox" [checked]="!!form.visible" (change)="form.visible = $any($event.target).checked ? 1 : 0" id="vis">
+        <label for="vis" style="margin:0">Visible sur le site</label>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:8px">
+        <button class="btn btn-outline" (click)="showModal.set(false)">Annuler</button>
+        <button class="btn btn-primary" (click)="save()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+}

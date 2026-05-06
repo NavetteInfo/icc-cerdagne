@@ -1,0 +1,40 @@
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="logo">⚙ ICC Admin</div>
+    <nav class="admin-nav">
+      <a routerLink="/admin/dashboard" routerLinkActive="active">📊 Dashboard</a>
+      <a routerLink="/admin/acteurs" routerLinkActive="active">👥 Acteurs</a>
+      <a routerLink="/admin/evenements" routerLinkActive="active">📅 Événements</a>
+      <a routerLink="/admin/adhesions" routerLinkActive="active">📬 Adhésions</a>
+      <a routerLink="/" style="margin-top:auto">← Site public</a>
+    </nav>
+    <div style="padding:16px 20px;margin-top:auto">
+      <button class="btn btn-sm" style="color:rgba(255,255,255,.5);width:100%" (click)="logout()">Déconnexion</button>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <div class="admin-header">
+      <h3>Tableau de bord</h3>
+    </div>
+    <div class="admin-content">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">{{ stats().acteurs }}</div>
+          <div class="stat-label">Acteurs</div>
+          <a routerLink="/admin/acteurs" class="stat-link">Gérer →</a>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">{{ stats().evenements }}</div>
+          <div class="stat-label">Événements</div>
+          <a routerLink="/admin/evenements" class="stat-link">Gérer →</a>
+        </div>
+        <div class="stat-card stat-earth">
+          <div class="stat-number">{{ stats().adhesions }}</div>
+          <div class="stat-label">Demandes d'adhésion</div>
+          <a routerLink="/admin/adhesions" class="stat-link">Voir →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

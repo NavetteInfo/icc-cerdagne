@@ -1,0 +1,25 @@
+<section class="page-header">
+  <div class="container">
+    <span class="section-tag">Événements</span>
+    <h1>Agenda du collectif</h1>
+    <p>Recyclathons, foires des artisans, ateliers collaboratifs — participez aux initiatives locales.</p>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="container">
+    @if (evenements().length) {
+      <div class="grid-3">
+        @for (e of evenements(); track e.id) {
+          <app-card-event [event]="e" />
+        }
+      </div>
+    } @else {
+      <div class="empty-state">
+        <div class="icon">📅</div>
+        <h3>Aucun événement à venir</h3>
+        <p>Les prochains événements seront annoncés ici. Rejoignez le collectif pour être informé !</p>
+      </div>
+    }
+  </div>
+</section>

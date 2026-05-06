@@ -1,0 +1,101 @@
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="section-tag">Cerdagne &amp; Capcir</span>
+      <h1>Ensemble pour<br><span class="text-green">dynamiser notre territoire</span></h1>
+      <p class="hero-desc">
+        Un collectif local autour du numérique, de la réparation, de l'artisanat et
+        des savoir-faire — pour créer des échanges, des rencontres et des projets concrets.
+      </p>
+      <div class="hero-actions">
+        <a routerLink="/rejoindre" class="btn btn-primary btn-lg">Rejoindre le collectif</a>
+        <a routerLink="/annuaire" class="btn btn-outline btn-lg">Voir l'annuaire</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-badge-group">
+        <div class="hero-badge">🔧 Réparation</div>
+        <div class="hero-badge">💻 Numérique</div>
+        <div class="hero-badge">🏺 Artisanat</div>
+        <div class="hero-badge">🌱 Local</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Valeurs -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h3>Échange &amp; rencontre</h3>
+        <p>Rassembler des personnes motivées pour partager idées et savoir-faire locaux.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">♻️</div>
+        <h3>Réemploi &amp; réparation</h3>
+        <p>Donner une seconde vie aux objets avec des Recyclathons et ateliers collaboratifs.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🗺️</div>
+        <h3>Territoire</h3>
+        <p>Mettre en valeur les acteurs et activités de la Cerdagne et du Capcir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partenaires fondateurs -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Fondateurs</span>
+      <h2>Qui sommes-nous ?</h2>
+      <p>Trois acteurs locaux à l'origine du collectif</p>
+    </div>
+    @if (acteurs().length) {
+      <div class="grid-3">
+        @for (a of acteurs(); track a.id) {
+          <app-card-acteur [acteur]="a" />
+        }
+      </div>
+      <div class="text-center mt-6">
+        <a routerLink="/annuaire" class="btn btn-outline">Voir tous les acteurs</a>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- Agenda -->
+@if (evenements().length) {
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Agenda</span>
+        <h2>Prochains événements</h2>
+        <p>Recyclathons, foires, ateliers — rejoignez les initiatives locales</p>
+      </div>
+      <div class="grid-3">
+        @for (e of evenements(); track e.id) {
+          <app-card-event [event]="e" />
+        }
+      </div>
+      <div class="text-center mt-6">
+        <a routerLink="/agenda" class="btn btn-outline">Tous les événements</a>
+      </div>
+    </div>
+  </section>
+}
+
+<!-- CTA adhésion -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Vous voulez contribuer ?</h2>
+      <p>Artisan, réparateur, acteur du numérique, ou simplement citoyen motivé — rejoignez le collectif.</p>
+      <a routerLink="/rejoindre" class="btn btn-primary btn-lg">Je rejoins le collectif</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,99 @@
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="logo">⚙ ICC Admin</div>
+    <nav class="admin-nav">
+      <a routerLink="/admin/dashboard" routerLinkActive="active">📊 Dashboard</a>
+      <a routerLink="/admin/acteurs" routerLinkActive="active">👥 Acteurs</a>
+      <a routerLink="/admin/evenements" routerLinkActive="active">📅 Événements</a>
+      <a routerLink="/admin/adhesions" routerLinkActive="active">📬 Adhésions</a>
+    </nav>
+    <div style="padding:16px 20px;margin-top:auto">
+      <button class="btn btn-sm" style="color:rgba(255,255,255,.5);width:100%" (click)="logout()">Déconnexion</button>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <div class="admin-header">
+      <h3>Acteurs</h3>
+      <button class="btn btn-primary btn-sm" (click)="openNew()">+ Ajouter</button>
+    </div>
+    <div class="admin-content">
+      <table class="admin-table">
+        <thead>
+          <tr><th>Nom</th><th>Catégorie</th><th>Localité</th><th>Visible</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          @for (a of acteurs(); track a.id) {
+            <tr>
+              <td><strong>{{ a.nom }}</strong></td>
+              <td><span class="badge badge-{{ a.categorie }}">{{ a.categorie }}</span></td>
+              <td>{{ a.localite || '—' }}</td>
+              <td>{{ a.visible ? '✅' : '❌' }}</td>
+              <td>
+                <button class="btn btn-sm btn-outline" (click)="openEdit(a)">Modifier</button>
+                <button class="btn btn-sm" style="color:#dc2626;margin-left:8px" (click)="delete(a)">Supprimer</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+@if (showModal()) {
+  <div class="modal-backdrop" (click)="showModal.set(false)">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>{{ editing() ? 'Modifier' : 'Nouvel acteur' }}</h3>
+        <button class="modal-close" (click)="showModal.set(false)">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Nom *</label>
+        <input class="form-control" [(ngModel)]="form.nom" name="nom">
+      </div>
+      <div class="form-group">
+        <label>Slug (URL) *</label>
+        <input class="form-control" [(ngModel)]="form.slug" name="slug" placeholder="mon-atelier">
+      </div>
+      <div class="form-group">
+        <label>Catégorie</label>
+        <select class="form-control" [(ngModel)]="form.categorie" name="categorie">
+          <option value="numerique">Numérique</option>
+          <option value="reparation">Réparation</option>
+          <option value="artisanat">Artisanat</option>
+          <option value="alimentation">Alimentation</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" [(ngModel)]="form.description" name="description"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Localité</label>
+        <input class="form-control" [(ngModel)]="form.localite" name="localite">
+      </div>
+      <div class="form-group">
+        <label>Contact (email)</label>
+        <input class="form-control" [(ngModel)]="form.contact" name="contact">
+      </div>
+      <div class="form-group">
+        <label>Site web</label>
+        <input class="form-control" [(ngModel)]="form.site_web" name="site_web">
+      </div>
+      <div class="form-group">
+        <label>URL photo</label>
+        <input class="form-control" [(ngModel)]="form.photo_url" name="photo_url">
+      </div>
+      <div class="form-group" style="display:flex;align-items:center;gap:10px">
+        <input type="checkbox" [checked]="!!form.visible" (change)="form.visible = $any($event.target).checked ? 1 : 0" id="vis">
+        <label for="vis" style="margin:0">Visible sur le site</label>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:8px">
+        <button class="btn btn-outline" (click)="showModal.set(false)">Annuler</button>
+        <button class="btn btn-primary" (click)="save()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+}
