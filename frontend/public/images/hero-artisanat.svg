@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
+  <rect width="200" height="160" fill="#fdf6ed" rx="12"/>
+  <!-- pottery wheel base -->
+  <ellipse cx="100" cy="140" rx="55" ry="10" fill="#c17b3c" opacity=".2"/>
+  <rect x="80" y="118" width="40" height="22" rx="5" fill="#c17b3c" opacity=".18"/>
+  <!-- pot on wheel -->
+  <path d="M72 118 Q72 70 100 65 Q128 70 128 118 Z" fill="#c17b3c" opacity=".3"/>
+  <ellipse cx="100" cy="118" rx="28" ry="6" fill="#c17b3c" opacity=".2"/>
+  <ellipse cx="100" cy="68" rx="18" ry="7" fill="#c17b3c" opacity=".35"/>
+  <!-- hands shaping -->
+  <!-- left hand -->
+  <path d="M55 90 Q68 80 72 95 Q74 108 68 115" fill="none" stroke="#7a6e5f" stroke-width="8" stroke-linecap="round" opacity=".35"/>
+  <!-- right hand -->
+  <path d="M145 90 Q132 80 128 95 Q126 108 132 115" fill="none" stroke="#7a6e5f" stroke-width="8" stroke-linecap="round" opacity=".35"/>
+  <!-- tools hanging -->
+  <line x1="30" y1="20" x2="30" y2="55" stroke="#7a6e5f" stroke-width="2" opacity=".3"/>
+  <ellipse cx="30" cy="60" rx="8" ry="6" fill="none" stroke="#7a6e5f" stroke-width="2.5" opacity=".3"/>
+  <line x1="50" y1="15" x2="50" y2="50" stroke="#7a6e5f" stroke-width="2" opacity=".3"/>
+  <rect x="44" y="50" width="12" height="9" rx="3" fill="#7a6e5f" opacity=".25"/>
+  <!-- paint drops -->
+  <circle cx="165" cy="40" r="5" fill="#2a6b45" opacity=".25"/>
+  <circle cx="175" cy="55" r="4" fill="#c17b3c" opacity=".3"/>
+  <circle cx="158" cy="62" r="3" fill="#2a6b45" opacity=".2"/>
+</svg>

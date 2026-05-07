@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200">
+  <rect width="360" height="200" fill="#e8f4ee"/>
+  <!-- laptop screen -->
+  <rect x="80" y="30" width="200" height="120" rx="8" fill="#2a6b45" opacity=".15"/>
+  <rect x="90" y="40" width="180" height="100" rx="5" fill="#2a6b45" opacity=".2"/>
+  <!-- code lines on screen -->
+  <rect x="100" y="55" width="80" height="7" rx="3" fill="#2a6b45" opacity=".4"/>
+  <rect x="100" y="68" width="110" height="7" rx="3" fill="#c17b3c" opacity=".5"/>
+  <rect x="100" y="81" width="60" height="7" rx="3" fill="#2a6b45" opacity=".3"/>
+  <rect x="100" y="94" width="95" height="7" rx="3" fill="#2a6b45" opacity=".4"/>
+  <rect x="100" y="107" width="75" height="7" rx="3" fill="#c17b3c" opacity=".35"/>
+  <rect x="100" y="120" width="85" height="7" rx="3" fill="#2a6b45" opacity=".25"/>
+  <!-- cursor blink -->
+  <rect x="185" y="120" width="3" height="10" rx="1" fill="#2a6b45" opacity=".7"/>
+  <!-- laptop base -->
+  <rect x="60" y="148" width="240" height="12" rx="6" fill="#2a6b45" opacity=".18"/>
+  <rect x="120" y="148" width="120" height="5" rx="3" fill="#2a6b45" opacity=".12"/>
+  <!-- shield icon top-right -->
+  <path d="M295 20 L320 30 L320 58 Q320 75 295 82 Q270 75 270 58 L270 30 Z" fill="#2a6b45" opacity=".18"/>
+  <rect x="283" y="50" width="24" height="18" rx="4" fill="#2a6b45" opacity=".4"/>
+  <path d="M287 50 L287 43 Q295 36 303 43 L303 50" fill="none" stroke="#2a6b45" stroke-width="4" stroke-linecap="round" opacity=".4"/>
+</svg>

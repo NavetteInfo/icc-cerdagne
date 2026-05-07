@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
+  <rect width="200" height="160" fill="#e8f4ee" rx="12"/>
+  <!-- shield -->
+  <path d="M100 18 L140 35 L140 85 Q140 120 100 140 Q60 120 60 85 L60 35 Z" fill="#2a6b45" opacity=".15"/>
+  <path d="M100 28 L132 42 L132 86 Q132 112 100 128 Q68 112 68 86 L68 42 Z" fill="#2a6b45" opacity=".2"/>
+  <!-- lock body -->
+  <rect x="86" y="78" width="28" height="24" rx="5" fill="#2a6b45" opacity=".55"/>
+  <!-- lock shackle -->
+  <path d="M90 78 L90 68 Q100 58 110 68 L110 78" fill="none" stroke="#2a6b45" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+  <!-- keyhole -->
+  <circle cx="100" cy="88" r="5" fill="white" opacity=".6"/>
+  <rect x="97" y="90" width="6" height="7" rx="2" fill="white" opacity=".6"/>
+  <!-- circuit lines radiating -->
+  <line x1="60" y1="80" x2="40" y2="80" stroke="#2a6b45" stroke-width="2" stroke-linecap="round" opacity=".3"/>
+  <circle cx="35" cy="80" r="5" fill="#2a6b45" opacity=".2"/>
+  <line x1="140" y1="80" x2="160" y2="80" stroke="#2a6b45" stroke-width="2" stroke-linecap="round" opacity=".3"/>
+  <circle cx="165" cy="80" r="5" fill="#2a6b45" opacity=".2"/>
+  <line x1="100" y1="18" x2="100" y2="5" stroke="#2a6b45" stroke-width="2" stroke-linecap="round" opacity=".3"/>
+  <!-- nodes -->
+  <circle cx="40" cy="55" r="6" fill="#c17b3c" opacity=".2"/>
+  <circle cx="160" cy="55" r="6" fill="#c17b3c" opacity=".2"/>
+  <line x1="40" y1="55" x2="65" y2="70" stroke="#c17b3c" stroke-width="1.5" stroke-linecap="round" opacity=".25"/>
+  <line x1="160" y1="55" x2="135" y2="70" stroke="#c17b3c" stroke-width="1.5" stroke-linecap="round" opacity=".25"/>
+  <!-- binary dots background -->
+  <text x="15" y="140" font-size="9" fill="#2a6b45" opacity=".12" font-family="monospace">01101</text>
+  <text x="150" y="145" font-size="9" fill="#2a6b45" opacity=".12" font-family="monospace">1001</text>
+</svg>

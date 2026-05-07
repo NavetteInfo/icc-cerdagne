@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200">
+  <rect width="360" height="200" fill="#f0fff4"/>
+  <!-- big leaf -->
+  <path d="M180 180 Q100 120 130 40 Q180 10 230 40 Q260 120 180 180 Z" fill="#2a6b45" opacity=".2"/>
+  <path d="M180 180 Q110 130 135 55 Q175 20 225 55 Q250 130 180 180 Z" fill="#2a6b45" opacity=".15"/>
+  <!-- leaf veins -->
+  <line x1="180" y1="180" x2="180" y2="40" stroke="#2a6b45" stroke-width="3" stroke-linecap="round" opacity=".3"/>
+  <line x1="180" y1="100" x2="145" y2="75" stroke="#2a6b45" stroke-width="2" stroke-linecap="round" opacity=".25"/>
+  <line x1="180" y1="120" x2="148" y2="100" stroke="#2a6b45" stroke-width="2" stroke-linecap="round" opacity=".25"/>
+  <line x1="180" y1="140" x2="150" y2="125" stroke="#2a6b45" stroke-width="2" stroke-linecap="round" opacity=".25"/>
+  <line x1="180" y1="100" x2="215" y2="75" stroke="#2a6b45" stroke-width="2" stroke-linecap="round" opacity=".25"/>
+  <line x1="180" y1="120" x2="212" y2="100" stroke="#2a6b45" stroke-width="2" stroke-linecap="round" opacity=".25"/>
+  <line x1="180" y1="140" x2="210" y2="125" stroke="#2a6b45" stroke-width="2" stroke-linecap="round" opacity=".25"/>
+  <!-- small leaves -->
+  <ellipse cx="80" cy="80" rx="30" ry="18" fill="#2a6b45" opacity=".15" transform="rotate(-30 80 80)"/>
+  <ellipse cx="290" cy="90" rx="25" ry="15" fill="#2a6b45" opacity=".15" transform="rotate(25 290 90)"/>
+  <!-- vegetables/fruits -->
+  <circle cx="60" cy="150" r="22" fill="#c17b3c" opacity=".3"/>
+  <path d="M60 128 Q58 118 55 112" fill="none" stroke="#2a6b45" stroke-width="4" stroke-linecap="round" opacity=".4"/>
+  <circle cx="310" cy="145" r="18" fill="#c17b3c" opacity=".25"/>
+  <ellipse cx="310" cy="145" rx="18" ry="18" fill="none" stroke="#c17b3c" stroke-width="2" opacity=".15"/>
+  <!-- root lines from bottom -->
+  <path d="M180 180 Q160 190 140 185" fill="none" stroke="#2a6b45" stroke-width="3" stroke-linecap="round" opacity=".2"/>
+  <path d="M180 180 Q185 192 195 188" fill="none" stroke="#2a6b45" stroke-width="3" stroke-linecap="round" opacity=".2"/>
+</svg>

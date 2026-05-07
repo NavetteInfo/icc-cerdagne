@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
+  <rect width="200" height="160" fill="#fdf6ed" rx="12"/>
+  <!-- workbench -->
+  <rect x="20" y="110" width="160" height="12" rx="4" fill="#c17b3c" opacity=".35"/>
+  <rect x="35" y="122" width="8" height="28" rx="3" fill="#c17b3c" opacity=".25"/>
+  <rect x="157" y="122" width="8" height="28" rx="3" fill="#c17b3c" opacity=".25"/>
+  <!-- lamp -->
+  <line x1="155" y1="20" x2="155" y2="70" stroke="#7a6e5f" stroke-width="4" stroke-linecap="round" opacity=".4"/>
+  <path d="M135 70 L175 70 L165 90 L145 90 Z" fill="#c17b3c" opacity=".4"/>
+  <ellipse cx="155" cy="90" rx="14" ry="5" fill="#c17b3c" opacity=".2"/>
+  <!-- circuit board on bench -->
+  <rect x="40" y="85" width="70" height="22" rx="4" fill="#2a6b45" opacity=".18"/>
+  <rect x="45" y="90" width="10" height="6" rx="2" fill="#2a6b45" opacity=".4"/>
+  <rect x="60" y="88" width="6" height="10" rx="2" fill="#2a6b45" opacity=".4"/>
+  <rect x="72" y="90" width="8" height="6" rx="2" fill="#2a6b45" opacity=".4"/>
+  <rect x="85" y="89" width="6" height="8" rx="2" fill="#2a6b45" opacity=".4"/>
+  <line x1="45" y1="93" x2="100" y2="93" stroke="#2a6b45" stroke-width="1.5" opacity=".25"/>
+  <!-- screwdriver -->
+  <line x1="125" y1="55" x2="95" y2="95" stroke="#7a6e5f" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+  <line x1="125" y1="55" x2="135" y2="45" stroke="#7a6e5f" stroke-width="9" stroke-linecap="round" opacity=".3"/>
+  <!-- wrench -->
+  <path d="M50 45 Q58 35 68 45 L62 55 L44 55 Z" fill="#7a6e5f" opacity=".4"/>
+  <line x1="56" y1="55" x2="40" y2="80" stroke="#7a6e5f" stroke-width="5" stroke-linecap="round" opacity=".4"/>
+</svg>

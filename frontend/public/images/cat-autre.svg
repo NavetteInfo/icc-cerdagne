@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200">
+  <rect width="360" height="200" fill="#f5f3f0"/>
+  <!-- hex grid pattern -->
+  <polygon points="90,40 110,28 130,40 130,64 110,76 90,64" fill="none" stroke="#7a6e5f" stroke-width="2" opacity=".2"/>
+  <polygon points="130,40 150,28 170,40 170,64 150,76 130,64" fill="#7a6e5f" opacity=".08"/>
+  <polygon points="170,40 190,28 210,40 210,64 190,76 170,64" fill="none" stroke="#7a6e5f" stroke-width="2" opacity=".2"/>
+  <polygon points="210,40 230,28 250,40 250,64 230,76 210,64" fill="#7a6e5f" opacity=".06"/>
+  <polygon points="70,76 90,64 110,76 110,100 90,112 70,100" fill="#7a6e5f" opacity=".07"/>
+  <polygon points="110,76 130,64 150,76 150,100 130,112 110,100" fill="none" stroke="#7a6e5f" stroke-width="2" opacity=".2"/>
+  <polygon points="150,76 170,64 190,76 190,100 170,112 150,100" fill="#2a6b45" opacity=".1"/>
+  <polygon points="190,76 210,64 230,76 230,100 210,112 190,100" fill="none" stroke="#7a6e5f" stroke-width="2" opacity=".2"/>
+  <polygon points="230,76 250,64 270,76 270,100 250,112 230,100" fill="#7a6e5f" opacity=".07"/>
+  <polygon points="90,112 110,100 130,112 130,136 110,148 90,136" fill="none" stroke="#7a6e5f" stroke-width="2" opacity=".2"/>
+  <polygon points="130,112 150,100 170,112 170,136 150,148 130,136" fill="#7a6e5f" opacity=".08"/>
+  <polygon points="170,112 190,100 210,112 210,136 190,148 170,136" fill="none" stroke="#7a6e5f" stroke-width="2" opacity=".2"/>
+  <polygon points="210,112 230,100 250,112 250,136 230,148 210,136" fill="#7a6e5f" opacity=".06"/>
+  <!-- central highlight -->
+  <circle cx="170" cy="88" r="18" fill="#c17b3c" opacity=".12"/>
+  <circle cx="170" cy="88" r="10" fill="#c17b3c" opacity=".2"/>
+</svg>

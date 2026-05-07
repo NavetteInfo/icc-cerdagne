@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <rect width="240" height="180" fill="#e8f4ee" rx="16"/>
+  <!-- person left -->
+  <circle cx="62" cy="58" r="22" fill="#2a6b45" opacity=".18"/>
+  <circle cx="62" cy="58" r="13" fill="#2a6b45" opacity=".35"/>
+  <path d="M35 110 Q62 92 89 110" fill="#2a6b45" opacity=".22"/>
+  <!-- person right -->
+  <circle cx="178" cy="58" r="22" fill="#2a6b45" opacity=".18"/>
+  <circle cx="178" cy="58" r="13" fill="#2a6b45" opacity=".35"/>
+  <path d="M151 110 Q178 92 205 110" fill="#2a6b45" opacity=".22"/>
+  <!-- connection arc -->
+  <path d="M89 65 Q120 30 151 65" fill="none" stroke="#c17b3c" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 5"/>
+  <!-- central node -->
+  <circle cx="120" cy="55" r="10" fill="#c17b3c" opacity=".25"/>
+  <circle cx="120" cy="55" r="6" fill="#c17b3c" opacity=".6"/>
+  <!-- dots -->
+  <circle cx="90" cy="65" r="4" fill="#c17b3c" opacity=".5"/>
+  <circle cx="150" cy="65" r="4" fill="#c17b3c" opacity=".5"/>
+  <!-- bottom network -->
+  <line x1="62" y1="108" x2="120" y2="135" stroke="#2a6b45" stroke-width="2" stroke-linecap="round" opacity=".25"/>
+  <line x1="178" y1="108" x2="120" y2="135" stroke="#2a6b45" stroke-width="2" stroke-linecap="round" opacity=".25"/>
+  <circle cx="120" cy="138" r="7" fill="#2a6b45" opacity=".2"/>
+  <circle cx="60" cy="150" r="5" fill="#2a6b45" opacity=".15"/>
+  <circle cx="180" cy="150" r="5" fill="#2a6b45" opacity=".15"/>
+  <line x1="120" y1="138" x2="60" y2="150" stroke="#2a6b45" stroke-width="1.5" stroke-linecap="round" opacity=".2"/>
+  <line x1="120" y1="138" x2="180" y2="150" stroke="#2a6b45" stroke-width="1.5" stroke-linecap="round" opacity=".2"/>
+</svg>

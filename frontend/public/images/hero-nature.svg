@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
+  <rect width="200" height="160" fill="#e8f4ee" rx="12"/>
+  <!-- sky -->
+  <rect width="200" height="90" fill="#e8f4ee" rx="12"/>
+  <!-- sun -->
+  <circle cx="160" cy="35" r="22" fill="#c17b3c" opacity=".2"/>
+  <circle cx="160" cy="35" r="13" fill="#c17b3c" opacity=".38"/>
+  <!-- clouds -->
+  <ellipse cx="55" cy="38" rx="28" ry="12" fill="white" opacity=".7"/>
+  <ellipse cx="70" cy="32" rx="20" ry="13" fill="white" opacity=".7"/>
+  <ellipse cx="40" cy="35" rx="15" ry="10" fill="white" opacity=".6"/>
+  <!-- mountain far -->
+  <path d="M0 130 L45 68 L90 130 Z" fill="#2a6b45" opacity=".12"/>
+  <path d="M80 130 L125 55 L170 130 Z" fill="#2a6b45" opacity=".15"/>
+  <path d="M140 130 L175 75 L200 105 L200 130 Z" fill="#2a6b45" opacity=".12"/>
+  <!-- mountain main -->
+  <path d="M20 145 L80 72 L140 145 Z" fill="#2a6b45" opacity=".32"/>
+  <!-- snow -->
+  <path d="M80 72 L66 98 L94 98 Z" fill="white" opacity=".7"/>
+  <!-- hills -->
+  <ellipse cx="30" cy="148" rx="55" ry="22" fill="#2a6b45" opacity=".22"/>
+  <ellipse cx="180" cy="152" rx="55" ry="20" fill="#2a6b45" opacity=".2"/>
+  <!-- pine trees -->
+  <polygon points="170,120 180,145 160,145" fill="#2a6b45" opacity=".4"/>
+  <polygon points="185,115 195,142 175,142" fill="#2a6b45" opacity=".35"/>
+  <polygon points="15,118 25,145 5,145" fill="#2a6b45" opacity=".35"/>
+</svg>
