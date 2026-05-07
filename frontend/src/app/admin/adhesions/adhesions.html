@@ -31,6 +31,7 @@
               <td>{{ a.created_at | date:'dd/MM/yyyy' }}</td>
               <td>
                 <button class="btn btn-sm btn-outline" (click)="open(a)">Voir</button>
+                <button class="btn btn-sm" style="color:#dc2626;margin-left:8px" (click)="delete(a)" title="Supprimer (RGPD)">🗑</button>
               </td>
             </tr>
           }

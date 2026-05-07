@@ -1,4 +1,6 @@
 import express from 'express';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 import mysql from 'mysql2/promise';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
@@ -12,23 +14,45 @@ if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32) {
   process.exit(1);
 }
 
-app.use(express.json());
+// ── Sécurité HTTP headers ────────────────────────────────────────────────────
+app.use(helmet());
 app.set('trust proxy', 1);
+app.use(express.json({ limit: '50kb' }));
 
+// ── Rate limiters ────────────────────────────────────────────────────────────
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Trop de tentatives, réessayez dans 15 minutes.' },
+});
+
+const adhesionLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Trop de demandes, réessayez plus tard.' },
+});
+
+// ── DB pool ──────────────────────────────────────────────────────────────────
 const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
+  host:     process.env.DB_HOST,
+  user:     process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
   waitForConnections: true,
 });
 
+// ── Mailer ───────────────────────────────────────────────────────────────────
 const mailer = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || 'localhost',
-  port: 25,
+  host:   process.env.SMTP_HOST || 'localhost',
+  port:   25,
   secure: false,
 });
 
+// ── Auth middleware ──────────────────────────────────────────────────────────
 function auth(req, res, next) {
   const token = req.headers.authorization?.replace('Bearer ', '');
   if (!token) return res.status(401).json({ error: 'Non autorisé' });
@@ -40,7 +64,10 @@ function auth(req, res, next) {
   }
 }
 
-// ── Health ──────────────────────────────────────────────────────────────────
+// ── Validation email basique ─────────────────────────────────────────────────
+const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// ── Health ───────────────────────────────────────────────────────────────────
 app.get('/health', (_req, res) => res.json({ ok: true }));
 
 // ── Acteurs (public) ─────────────────────────────────────────────────────────
@@ -76,10 +103,13 @@ app.get('/api/evenements/:slug', async (req, res) => {
 });
 
 // ── Adhésion (public) ────────────────────────────────────────────────────────
-app.post('/api/adhesion', async (req, res) => {
+app.post('/api/adhesion', adhesionLimiter, async (req, res) => {
   const { nom, email, activite, message } = req.body ?? {};
   if (!nom?.trim() || !email?.trim()) {
     return res.status(400).json({ error: 'Nom et email requis' });
+  }
+  if (!emailRe.test(email.trim())) {
+    return res.status(400).json({ error: 'Email invalide' });
   }
   await pool.query(
     'INSERT INTO adhesions (nom, email, activite, message) VALUES (?,?,?,?)',
@@ -87,10 +117,10 @@ app.post('/api/adhesion', async (req, res) => {
   );
   try {
     await mailer.sendMail({
-      from: 'icc@navetteinfo.fr',
-      to: process.env.CONTACT_EMAIL,
-      subject: `[ICC] Nouvelle adhésion — ${nom}`,
-      text: `Nom: ${nom}\nEmail: ${email}\nActivité: ${activite ?? '-'}\nMessage: ${message ?? '-'}`,
+      from:    'icc@navetteinfo.fr',
+      to:      process.env.CONTACT_EMAIL,
+      subject: `[ICC] Nouvelle adhésion — ${nom.trim()}`,
+      text:    `Nom: ${nom.trim()}\nEmail: ${email.trim()}\nActivité: ${activite ?? '-'}\nMessage: ${message ?? '-'}`,
     });
   } catch (e) {
     console.error('Mail adhesion error:', e.message);
@@ -99,8 +129,9 @@ app.post('/api/adhesion', async (req, res) => {
 });
 
 // ── Admin auth ───────────────────────────────────────────────────────────────
-app.post('/api/admin/login', async (req, res) => {
+app.post('/api/admin/login', loginLimiter, async (req, res) => {
   const { email, password } = req.body ?? {};
+  if (!email || !password) return res.status(400).json({ error: 'Champs requis' });
   const [rows] = await pool.query('SELECT * FROM admins WHERE email=?', [email]);
   if (!rows.length) return res.status(401).json({ error: 'Identifiants invalides' });
   const ok = await bcrypt.compare(password, rows[0].password);
@@ -167,10 +198,16 @@ app.delete('/api/admin/evenements/:id', auth, async (req, res) => {
   res.json({ ok: true });
 });
 
-// ── Admin — adhésions (lecture) ──────────────────────────────────────────────
+// ── Admin — adhésions ────────────────────────────────────────────────────────
 app.get('/api/admin/adhesions', auth, async (_req, res) => {
   const [rows] = await pool.query('SELECT * FROM adhesions ORDER BY created_at DESC');
   res.json(rows);
+});
+
+// RGPD — droit à l'effacement
+app.delete('/api/admin/adhesions/:id', auth, async (req, res) => {
+  await pool.query('DELETE FROM adhesions WHERE id=?', [req.params.id]);
+  res.json({ ok: true });
 });
 
 app.listen(PORT, () => console.log(`[icc-api] :${PORT}`));

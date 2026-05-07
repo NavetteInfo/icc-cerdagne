@@ -31,5 +31,6 @@ export class ApiService {
   adminPutEvenement(id: number, d: Partial<Evenement>) { return this.http.put(`${this.base}/admin/evenements/${id}`, d); }
   adminDeleteEvenement(id: number)                { return this.http.delete(`${this.base}/admin/evenements/${id}`); }
 
-  adminGetAdhesions() { return this.http.get<Adhesion[]>(`${this.base}/admin/adhesions`); }
+  adminGetAdhesions()            { return this.http.get<Adhesion[]>(`${this.base}/admin/adhesions`); }
+  adminDeleteAdhesion(id: number) { return this.http.delete(`${this.base}/admin/adhesions/${id}`); }
 }

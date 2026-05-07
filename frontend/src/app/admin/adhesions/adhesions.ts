@@ -25,5 +25,10 @@ export class AdhesionsAdminComponent implements OnInit {
   open(a: Adhesion) { this.selected.set(a); }
   close() { this.selected.set(null); }
 
+  delete(a: Adhesion) {
+    if (!confirm(`Supprimer la demande de ${a.nom} ? (RGPD — irréversible)`)) return;
+    this.api.adminDeleteAdhesion(a.id).subscribe(() => this.load());
+  }
+
   logout() { this.auth.logout(); this.router.navigate(['/admin/login']); }
 }
